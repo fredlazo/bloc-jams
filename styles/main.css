@@ -20,7 +20,7 @@ body {
      padding: 0.5rem;
      /* #1 */
      background-color: rgba(101,18,95,0.5);
-     /* #2 */
+    /* #2 */
      z-index: 1;
 }
 
@@ -68,6 +68,11 @@ body {
  .container {
      margin: 0 auto;
      max-width: 64rem;
+ }
+
+
+ .container.narrow {
+     max-width: 56rem;
  }
 
  /* Medium and small screens (640px) */
