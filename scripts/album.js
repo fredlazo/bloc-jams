@@ -29,6 +29,21 @@
      ]
  };
 
+ var albumSabbath = {
+     title: 'Paranoid',
+     artist: 'Black Sabbath',
+     label: 'Vertigo',
+     year: '1970',
+     albumArtUrl: 'assets/images/album_covers/22.png',
+     songs: [
+         { title: 'War Pigs', duration: '7:57' },
+         { title: 'Paranoid', duration: '2:48' },
+         { title: 'Planet Caravan', duration: '4:32' },
+         { title: 'Iron Man', duration: '5:56'},
+         { title: 'Electric Funeral', duration: '4:53'}
+     ]
+ };
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -41,15 +56,14 @@
      return template;
  };
 
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+ var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+ var albumImage = document.getElementsByClassName('album-cover-art')[0];
+ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
  var setCurrentAlbum = function(album) {
-     // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
-     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
-     // #2
+
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -66,4 +80,13 @@
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     var albums = [albumPicasso, albumMarconi, albumSabbath];
+     var index = 1;
+     albumImage.addEventListener("click", function(event){
+        setCurrentAlbum(albums[index]);
+         index++;
+         if (index == albums.length){
+             index = 0;
+         }
+     });
  };
